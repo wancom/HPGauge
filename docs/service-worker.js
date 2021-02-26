@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/HPGauge/precache-manifest.883c1a88d08d0f0c4a94cbb4c096f1d5.js"
+  "/HPGauge/precache-manifest.f11f498a78b80700f52375795de4bf3d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "damagetimer"});
