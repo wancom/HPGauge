@@ -37,8 +37,9 @@ export default class HelloWorld extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .gauge-container {
-  height: 14px;
-  margin: 10px;
+  height: 20px;
+  width: 310px;
+  margin: 20px auto;
   border-radius: 24px;
 }
 .gauge-container-barborder {
