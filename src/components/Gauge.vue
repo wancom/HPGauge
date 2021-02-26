@@ -10,7 +10,7 @@
       <div
         class="gauge-container-barover"
         :style="{
-          width: 500 - gaugeSize() + 'px',
+          width: 300 - gaugeSize() + 'px',
           'margin-left': 5 + gaugeSize() + 'px'
         }"
       ></div>
@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-const MAXSIZE = 500;
+const MAXSIZE = 300;
 
 @Component
 export default class HelloWorld extends Vue {
@@ -37,21 +37,21 @@ export default class HelloWorld extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .gauge-container {
-  height: 24px;
-  margin: 50px;
+  height: 14px;
+  margin: 10px;
   border-radius: 24px;
 }
 .gauge-container-barborder {
   position: absolute;
-  width: 504px;
-  height: 24px;
+  width: 304px;
+  height: 14px;
   border: black 3px solid;
   border-radius: 24px;
   z-index: 1002;
 }
 .gauge-container-barover {
   position: absolute;
-  height: 20px;
+  height: 10px;
   margin: 5px;
   background: white;
   z-index: 1001;
@@ -59,8 +59,8 @@ export default class HelloWorld extends Vue {
 }
 .gauge-container-bar {
   position: absolute;
-  width: calc(500px);
-  height: 20px;
+  width: 300px;
+  height: 10px;
   margin: 5px;
   background: green;
   border-radius: 20px;
