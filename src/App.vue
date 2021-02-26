@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <Gauge :value="hpval" :max="100" :dangerth="20" />
-    <input type="number" v-model="hpdiffval" min="-100" max="100" />
-    <input type="text" v-model="tmsg" />
-    <button @click="submit">確定</button><br />
-    <button @click="reset">Reset</button>
-    <div class="log">
-      {{ log }}
+    <div v-for="(v, i) in hpval" :key="i">
+      <Gauge :value="hpval[i]" :max="hpmax[i]" :dangerth="hpdangerth[i]" />
+      <input type="number" v-model="hpdiffval[i]" min="-100" max="100" />
+      <input type="text" v-model="tmsg[i]" />
+      <button @click="submit(i)">確定</button><br />
+      <button @click="reset(i)">Reset</button>
+      <div class="log">
+        {{ log[i] }}
+      </div>
     </div>
   </div>
 </template>
@@ -21,22 +23,27 @@ import Gauge from "./components/Gauge.vue";
   }
 })
 export default class App extends Vue {
-  public hpval = 100;
-  public log = "";
-  public hpdiffval = 0;
-  public tmsg = "";
-  public submit() {
-    this.addLog(this.hpdiffval * 1, this.tmsg);
+  public hpval = [100, 100];
+  public hpmax = [100, 100];
+  public hpdangerth = [20, 20];
+
+  public log = ["", ""];
+
+  public hpdiffval = [0, 0];
+  public tmsg = ["", ""];
+
+  public submit(i: number) {
+    this.addLog(i, this.hpdiffval[i] * 1, this.tmsg[i]);
   }
-  public reset() {
-    this.hpval = 100;
-    this.log = "";
+  public reset(i: number) {
+    this.hpval.splice(i, 1, 100);
+    this.log.splice(i, 1, "");
   }
-  public addLog(HPDiff: number, msg: string) {
-    this.log += msg + "\n";
-    this.hpval += HPDiff;
-    if (this.hpval < 0) this.hpval = 0;
-    if (this.hpval > 100) this.hpval = 100;
+  public addLog(i: number, HPDiff: number, msg: string) {
+    this.log.splice(i, 1, this.log[i] + msg + "\n");
+    this.hpval.splice(i, 1, this.hpval[i] + HPDiff);
+    if (this.hpval[i] < 0) this.hpval.splice(i, 1, 0);
+    if (this.hpval[i] > 100) this.hpval.splice(i, 1, 100);
   }
 }
 </script>
