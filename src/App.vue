@@ -3,7 +3,8 @@
     <Gauge :value="hpval" :max="100" :dangerth="20" />
     <input type="number" v-model="hpdiffval" min="-100" max="100" />
     <input type="text" v-model="tmsg" />
-    <button @click="submit">確定</button>
+    <button @click="submit">確定</button><br />
+    <button @click="reset">Reset</button>
     <div class="log">
       {{ log }}
     </div>
@@ -26,6 +27,10 @@ export default class App extends Vue {
   public tmsg = "";
   public submit() {
     this.addLog(this.hpdiffval * 1, this.tmsg);
+  }
+  public reset() {
+    this.hpval = 100;
+    this.log = "";
   }
   public addLog(HPDiff: number, msg: string) {
     this.log += msg + "\n";
